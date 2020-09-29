@@ -1,0 +1,7 @@
+.dashboard {
+  display: flex;
+}
+.sidbar {
+  border-right: 1px solid lightgray;
+  width: 250px;
+}
