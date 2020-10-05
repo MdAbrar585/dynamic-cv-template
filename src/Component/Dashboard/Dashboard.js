@@ -1,10 +1,8 @@
 import React from "react";
-import { PureComponent } from "react";
 import "../Navbar/Navbar.css";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,

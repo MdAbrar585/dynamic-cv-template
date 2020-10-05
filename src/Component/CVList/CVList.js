@@ -7,21 +7,28 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const CVList = () => {
-  const [data, setData] = useState([]);
+const CVList = (props) => {
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/information")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data from database", data);
-        setData(data);
-        console.log(data);
-      });
-  }, []);
+  // const handleCV = (candidate) => {
+  //   console.log("clicked", candidate);
+  // };
+
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/information")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("data from database", data);
+  //       setData(data);
+  //       console.log(data);
+  //     });
+  // }, []);
 
   const useStyles = makeStyles({
     table: {
@@ -29,7 +36,7 @@ const CVList = () => {
     },
   });
   const classes = useStyles();
-  console.log(data);
+  // console.log(props.d);
   return (
     <div>
       <h1 className="text-center display-3">CVList</h1>
@@ -47,13 +54,26 @@ const CVList = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((row) => (
-                <TableRow key={row.name}>
+              {props.d.map((row) => (
+                <TableRow key={row._id}>
                   <TableCell align="center">{row.name}</TableCell>
 
                   <TableCell align="center">
-                    <button className="btn btn-info">View</button>
-                    <button className="btn btn-danger">Delete</button>
+                    <Link to="/cdDetails">
+                      <button
+                        className="btn btn-info"
+                        onClick={() => props.handleCV(row)}
+                      >
+                        View
+                      </button>
+                    </Link>
+
+                    <button
+                      className="btn btn-danger ml-3"
+                      onClick={() => props.handleRemove(row._id)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
                   </TableCell>
                 </TableRow>
               ))}

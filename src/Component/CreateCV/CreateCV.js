@@ -7,7 +7,7 @@ const CreateCV = () => {
     // console.log(data);
     const information = data;
     console.log(information);
-    fetch("http://localhost:4000/placeInformation", {
+    fetch("https://dynamic-cv-template.herokuapp.com/placeInformation", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,8 @@ const CreateCV = () => {
       .then((info) => {
         //clear local storage cart
         console.log("info Saved", info);
-        alert("success!!");
+        alert("success!!  " + info._id);
+        console.log("success!!", info.name);
       });
   };
   return (
@@ -28,8 +29,8 @@ const CreateCV = () => {
       <form className="container" onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputName">Name</label>
+            <div className="form-group">
+              <label htmlFor="inputName">Name</label>
               <input
                 name="name"
                 className="form-control"
@@ -42,8 +43,8 @@ const CreateCV = () => {
             </div>
           </div>
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputName">Father Name</label>
+            <div className="form-group">
+              <label htmlFor="inputName">Father Name</label>
               <input
                 name="fatherName"
                 className="form-control"
@@ -57,8 +58,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputBirthDate">Date of Birth</label>
+            <div className="form-group">
+              <label htmlFor="inputBirthDate">Date of Birth</label>
               <input
                 type="date"
                 name="birthDate"
@@ -72,8 +73,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputGender">Gender</label>
+            <div className="form-group">
+              <label htmlFor="inputGender">Gender</label>
               <select
                 name="gender"
                 ref={register({ required: true })}
@@ -90,8 +91,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputPhone">Phone Number</label>
+            <div className="form-group">
+              <label htmlFor="inputPhone">Phone Number</label>
               <input
                 name="phone"
                 className="form-control"
@@ -105,8 +106,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputName">Email</label>
+            <div className="form-group">
+              <label htmlFor="inputName">Email</label>
               <input
                 name="email"
                 className="form-control"
@@ -120,8 +121,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputName">Address</label>
+            <div className="form-group">
+              <label htmlFor="inputName">Address</label>
               <input
                 name="address"
                 className="form-control"
@@ -135,8 +136,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputDistrict">District</label>
+            <div className="form-group">
+              <label htmlFor="inputDistrict">District</label>
               <select
                 name="district"
                 ref={register({ required: true })}
@@ -153,8 +154,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputInstitute">Institute</label>
+            <div className="form-group">
+              <label htmlFor="inputInstitute">Institute</label>
               <input
                 name="institute"
                 className="form-control"
@@ -168,8 +169,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputSubject">Subject</label>
+            <div className="form-group">
+              <label htmlFor="inputSubject">Subject</label>
               <input
                 name="subject"
                 className="form-control"
@@ -183,8 +184,8 @@ const CreateCV = () => {
           </div>
 
           <div className="col-xl-6">
-            <div class="form-group">
-              <label for="inputPassingyear">Passing Year</label>
+            <div className="form-group">
+              <label htmlFor="inputPassingyear">Passing Year</label>
               <input
                 name="passingyear"
                 className="form-control"
@@ -198,7 +199,7 @@ const CreateCV = () => {
           </div>
         </div>
 
-        <input type="submit" />
+        <input className="btn btn-info" type="submit" />
       </form>
     </div>
   );
